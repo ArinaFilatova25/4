@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1615324066 source:c:\users\user\desktop\frogs\taskk4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<time.h>
+
