@@ -43,16 +43,16 @@ int pop(list **head)
     return val;
 }
 
-void list_print(list*head)
+   void list_print(list*head)
 {
-    list *p;
-    p = head;
-    do
-    {
-        printf("%d ", p->id);
-        p = p->next;
-    }
-    while (p != NULL);
+list *p;
+p = head;
+do
+{
+printf("%d ", p->id);
+p = p->next;
+}
+while (p != NULL);
 }
 
 void insert_before(list* bef_el, list* prev_bef_el, int znach)
@@ -183,11 +183,17 @@ int main()
                 {
                     printf("Введите значение искомого элемента\n");
                     scanf("%d", &znach2);
+                    if (znach2==head->id){
+                        push(&head, znach);
+                        list_print(head);
+                    }
 
+                    else{
                     el = search(znach2, head, 1);
 
                     insert_before(el->next, el, znach);
                     list_print(head);
+                    }
                 }
                 break;
 
@@ -237,9 +243,17 @@ int main()
                 case 2:
                     printf("Введите значение искомого элемента\n");
                     scanf("%d", &znach2);
-                    el = search(znach2, head, 1);
+                    if (znach2==head->id){
+                        pop(&head);
+                        list_print(head);
+                    }
+
+                    else{
+                      el = search(znach2, head, 1);
                     delete_given(el);
                     list_print(head);
+                    }
+
                     break;
 
                 case 3:
