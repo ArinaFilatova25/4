@@ -28,8 +28,8 @@ void push(list**head, int x)
 {
     list*tmp = (list*) malloc(sizeof(list));
     tmp->id = x;
-    tmp->next = (*head);
-    (*head) = tmp;
+    tmp->next = (*head)->next;
+    (*head)->next = tmp;
 }
 
 int pop(list **head)
@@ -46,7 +46,7 @@ int pop(list **head)
    void list_print(list*head)
 {
 list *p;
-p = head;
+p = head->next;
 do
 {
 printf("%d ", p->id);
@@ -183,17 +183,12 @@ int main()
                 {
                     printf("Введите значение искомого элемента\n");
                     scanf("%d", &znach2);
-                    if (znach2==head->id){
-                        push(&head, znach);
-                        list_print(head);
-                    }
 
-                    else{
                     el = search(znach2, head, 1);
 
                     insert_before(el->next, el, znach);
                     list_print(head);
-                    }
+
                 }
                 break;
 
@@ -243,16 +238,11 @@ int main()
                 case 2:
                     printf("Введите значение искомого элемента\n");
                     scanf("%d", &znach2);
-                    if (znach2==head->id){
-                        pop(&head);
-                        list_print(head);
-                    }
 
-                    else{
                       el = search(znach2, head, 1);
                     delete_given(el);
                     list_print(head);
-                    }
+
 
                     break;
 
@@ -270,7 +260,7 @@ int main()
             break;
         case 3:
             printf("Сумма элементов, стоящих на четных местах:\n");
-            printf("%d",indiv(head));
+            printf("%d",indiv(head->next));
             break;
         }
 
